@@ -1,19 +1,38 @@
 const baseURL = "http://localhost:3000";
 const charactersURL = `${baseURL}/characters`;
 
+const showCharacters = document.querySelector(".show-characters");
+const showForm = document.querySelector(".show-form");
+const createCharacterForm = document.querySelector(".create-character-form");
+const charactersSection = document.querySelector(".characters-section");
+
+// Fetch
 fetch(charactersURL).then(parseJSON).then(getCharacters);
 
+// Event listeners
+showCharacters.addEventListener("click", showCharactersSection);
+showForm.addEventListener("click", showCreateCharactersForm);
+// createCharacterForm.addEventListener("submit", createNewCharacter);
+
+// Toggle between the characters and the form
+function showCharactersSection() {
+  charactersSection.classList.remove("hide");
+  createCharacterForm.classList.add("hide");
+}
+
+function showCreateCharactersForm() {
+  charactersSection.classList.add("hide");
+  createCharacterForm.classList.remove("hide");
+}
+
+// Get and show characters from the fetch result
 function getCharacters(characters) {
-  console.log("Characters", characters);
-
-  const charactersSection = document.querySelector(".characters");
-
   characters.forEach((character) => {
-    showCharacter(character, charactersSection);
+    showCharacter(character);
   });
 }
 
-function showCharacter(character, charactersSection) {
+function showCharacter(character) {
   const characterCard = document.createElement("div");
   characterCard.classList.add("character-card");
 

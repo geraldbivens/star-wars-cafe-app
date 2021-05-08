@@ -12,9 +12,21 @@
   <body>
     <header>
       <h1>Star Wars Cafe</h1>
+      <nav>
+        <button class="show-characters">Characters</button>
+        <button class="show-form">Create</button>
+      </nav>
     </header>
     <main>
-      <section class="characters"></section>
+      <form class="create-character-form hide">
+        <input type="text" name="name" placeholder="Name" />
+        <input type="text" name="image" placeholder="Image URL" />
+        <input type="text" name="favorite_drink" placeholder="Favorite Drink" />
+        <label for="side">Light Side</label>
+        <input type="checkbox" name="side" id="side" />
+        <input type="submit" value="Create!" />
+      </form>
+      <section class="characters-section"></section>
     </main>
   </body>
 </html>
